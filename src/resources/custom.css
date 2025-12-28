@@ -1,0 +1,211 @@
+/* :root {
+  /*
+  /* Example setup for custom colors */
+  /* Generate at: https://once-ui.com/customize */
+  /*
+  --scheme-brand-100: #08002f;
+  --scheme-brand-200:  #04025c;
+  --scheme-brand-300:  #1f398e;
+  --scheme-brand-400:  #3856ae;
+  --scheme-brand-500:  #5071cc;
+  --scheme-brand-600:  #6f94f1;
+  --scheme-brand-700:  #8db3ff;
+  --scheme-brand-800:  #b2dbff;
+  --scheme-brand-900:  #bfe8ff;
+  --scheme-brand-1000: #ccf6ff;
+  --scheme-brand-1100: #d2fcff;
+  --scheme-brand-1200: #d2fcff;
+  --scheme-brand-600-10: rgba(111,148,241,0.1);
+  --scheme-brand-600-30: rgba(111,148,241,0.3);
+  --scheme-brand-600-50: rgba(111,148,241,0.5);
+
+  --scheme-accent-100:  #030b10;
+  --scheme-accent-200:  #0d181d;
+  --scheme-accent-300:  #364248;
+  --scheme-accent-400:  #505d64;
+  --scheme-accent-500:  #69777e;
+  --scheme-accent-600:  #8a989f;
+  --scheme-accent-700:  #a8b7bf;
+  --scheme-accent-800:  #c8d7df;
+  --scheme-accent-900:  #d5e4ec;
+  --scheme-accent-1000: #e2f1f9;
+  --scheme-accent-1100: #e9f8ff;
+  --scheme-accent-1200: #efffff;
+  --scheme-accent-600-10: rgba(138,152,159,0.1);
+  --scheme-accent-600-30: rgba(138,152,159,0.3);
+  --scheme-accent-600-50: rgba(138,152,159,0.5);
+
+  --scheme-neutral-100:  #020b10;
+  --scheme-neutral-200:  #0b181d;
+  --scheme-neutral-300:  #344248;
+  --scheme-neutral-400:  #4f5d64;
+  --scheme-neutral-500:  #68777e;
+  --scheme-neutral-600:  #89989f;
+  --scheme-neutral-700:  #a7b7be;
+  --scheme-neutral-800:  #c7d7df;
+  --scheme-neutral-900:  #d4e4ec;
+  --scheme-neutral-1000: #e1f2f9;
+  --scheme-neutral-1100: #e7f8ff;
+  --scheme-neutral-1200: #eeffff;
+  --scheme-neutral-600-10: rgba(137,152,159,0.1);
+  --scheme-neutral-600-30: rgba(137,152,159,0.3);
+  --scheme-neutral-600-50: rgba(137,152,159,0.5);
+  /*
+}*/
+
+.footer-card{background:#0a0a0a !important;}
+.footer-card:hover{transform:none !important;}
+.footer-card{border-top: 1px solid rgba(255,255,255,0.1) !important;}
+.footer-card{border-left: none !important;}
+.footer-card{border-right: none !important;}
+.footer-card{border-bottom: none !important;}
+.footer-card{flex-direction: column !important;}
+
+.social-icon { color: rgba(255,255,255,0.5); transition: color 0.3s ease; cursor: pointer; }
+.social-icon:hover { color: #ffffff; }
+
+.footer-top-row { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; padding-left: 128px !important; padding-right: 128px !important; }
+
+/* Contact form card: disable hover transform, shadow, and background changes
+   Use explicit popup-like background (#151515) to match navbar popups */
+.contact-card {
+  transition: none !important;
+  box-shadow: none !important;
+  background: #151515 !important;
+  filter: none !important;
+  color: inherit !important;
+}
+.contact-card:hover,
+.contact-card:focus,
+.contact-card:active {
+  transform: none !important;
+  box-shadow: none !important;
+  background: #151515 !important;
+  filter: none !important;
+  color: inherit !important;
+}
+
+/* Ensure cards can grow/shrink inside flex containers and respect explicit widths */
+.contact-card {
+  width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+  /* allow children to control height via flex; avoid forcing height:100% */
+  min-height: 0 !important;
+}
+.contact-card > * {
+  width: 100%;
+  box-sizing: border-box;
+  min-height: 0 !important;
+}
+
+/* Target only the right-side contact info card so it stretches to match the form card height */
+.contact-info-card {
+  display: flex !important;
+  flex-direction: column !important;
+  align-self: stretch !important;
+  height: 100%;
+  min-height: 0 !important;
+}
+.contact-info-card > * {
+  flex: 1 1 0 !important;
+  min-height: 0 !important;
+}
+
+/* Fix RevealFx clipping on /nosotros hero */
+/* The blur filter (1rem) extends beyond element boundaries and gets clipped by the parent */
+/* Solution: Add padding to RevealFx to contain the blur, then compensate with negative margin */
+
+.nosotros-hero,
+.nosotros-hero-content {
+  overflow: visible !important;
+}
+
+/* Give RevealFx elements room for the blur effect */
+.nosotros-hero-content > div[class*="RevealFx"] {
+  padding-left: 1.5rem !important;
+  margin-left: -1.5rem !important;
+  padding-top: 0.5rem !important;
+  margin-top: -0.5rem !important;
+}
+
+/* Ensure html doesn't clip the blur but prevents horizontal scroll */
+html {
+  overflow-x: hidden !important;
+}
+
+/* Fix: Textarea character count - posicionado absolutamente para no empujar el textarea */
+/* El div del contador debe estar sobre el textarea, no debajo de él */
+#message ~ [class*="suffix"],
+[class*="textareaBase"] [class*="suffix"] {
+  position: absolute !important;
+  bottom: 8px !important;
+  left: 12px !important;
+  right: auto !important;
+  width: auto !important;
+  padding: 0 !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+}
+
+/* El contenedor del textarea debe tener position relative */
+[class*="textareaBase"] > div {
+  position: relative !important;
+}
+
+/* Asegura que el textarea tenga resize vertical habilitado y ocupe todo el espacio */
+textarea[id="message"] {
+  resize: vertical !important;
+}
+
+/* Override browser autofill styling to remove diagonal dashed lines */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-page-background) inset !important;
+  -webkit-text-fill-color: var(--color-on-page-background) !important;
+  background-color: var(--color-page-background) !important;
+  background-clip: content-box !important;
+  border: 1px solid var(--color-neutral-alpha-medium) !important;
+}
+
+/* Also handle textarea autofill */
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+textarea:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--color-page-background) inset !important;
+  -webkit-text-fill-color: var(--color-on-page-background) !important;
+  background-color: var(--color-page-background) !important;
+  background-clip: content-box !important;
+}
+
+/* Hide HeadingNav on mobile and tablet */
+@media (max-width: 768px) {
+  .heading-nav-desktop {
+    display: none !important;
+  }
+  
+  /* Mobile padding for blog sections */
+  .blog-section-mobile-padding {
+    padding-left: var(--static-space-24) !important;
+    padding-right: var(--static-space-24) !important;
+  }
+  
+  /* Double padding for blog body content on mobile */
+  .blog-body-mobile-padding {
+    padding-left: var(--static-space-48) !important;
+    padding-right: var(--static-space-48) !important;
+  }
+}
+
+/* LinkedIn button hover effects */
+.linkedin-button {
+  border: 1px solid transparent !important;
+  transition: border-color 0.2s ease !important;
+}
+
+.linkedin-button:hover {
+  border: 1px solid var(--neutral-alpha-medium) !important;
+}
